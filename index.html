@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker App</title>
+    <div style="position: relative; display: inline-block;">
+    <video id="video" autoplay playsinline></video>
+    <div id="target"></div>
+</div>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f0f0f0; margin: 0; padding: 20px; }
+        #video { width: 100%; max-width: 400px; border-radius: 10px; }
+        #colorDisplay { 
+            width: 100px; height: 100px; 
+            margin: 20px auto; border-radius: 50%; 
+            border: 5px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .info { font-size: 1.2rem; font-weight: bold; }
+        #target {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        border: 2px solid white;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        pointer-events: none; /* เพื่อให้ไม่รบกวนการสัมผัสหน้าจอ */
+    }
+    /* เพิ่มเส้นกากบาทเล็กๆ ในเป้า */
+    #target::after {
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 2px; height: 2px;
+        background: red;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+    </style>
+</head>
+<body>
+    <h2>Color Detector</h2>
+    <video id="video" autoplay playsinline></video>
+    
+    <div id="colorDisplay"></div>
+    
+    <div class="info">
+        <p id="hexText">HEX: #FFFFFF</p>
+        <p id="rgbText">RGB: (255, 255, 255)</p>
+    </div>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <script src="app.js"></script>
+</body>
+</html>
